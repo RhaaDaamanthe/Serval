@@ -179,4 +179,4 @@ private function checkMove($X, $cY, $Angle){
 }
 
 // Modifier par Alex le 11/03/25 en direct live de la salle a manger avec les fous du bus
-?>  
+//hello petit con?> 
