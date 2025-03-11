@@ -249,30 +249,45 @@ public function goLeft(){
     }
 }
 
+// Méthode pour effectuer une rotation vers la droite
 public function turnRight() {
-    $test = $this->checkTurnRight();
-    if($test == 1) {
+    // Vérifie si la rotation vers la droite est possible
+    $essai = $this->checkTurnRight();
+
+    // Erreur ici : la variable utilisée dans la condition est "$test" au lieu de "$essai"
+    if($essai == 1) {  
+        // Si l'angle actuel est à 0° (nord), tourner à 270° (ouest)
         if($this->_currentAngle == 0) {
             $this->setCurrentAngle(270);
         } else {
+            // Sinon, diminuer l'angle de 90° pour tourner à droite
             $this->setCurrentAngle($this->_currentAngle - 90);
         }
-    }   else {
+    } else {
+        // Si le mouvement n'est pas possible, afficher un message d'erreur
         error_log('Vous ne pouvez pas tourner à droite.');
     }
 }
 
+// Méthode pour effectuer une rotation vers la gauche
 public function turnLeft() {
-    $test = $this->checkTurnLeft();
-    if($test == 1) {
+    // Vérifie si la rotation vers la gauche est possible
+    $essai = $this->checkTurnLeft();
+
+    // Erreur ici : la variable utilisée dans la condition est "$test" au lieu de "$essai"
+    if($essai == 1) {  
+        // Si l'angle actuel est à 270° (ouest), revenir à 0° (nord)
         if($this->_currentAngle == 270) {
             $this->setCurrentAngle(0);
         } else {
+            // Sinon, augmenter l'angle de 90° pour tourner à gauche
             $this->setCurrentAngle($this->_currentAngle + 90);
         }
-    }   else {
+    } else {
+        // Si le mouvement n'est pas possible, afficher un message d'erreur
         error_log('Vous ne pouvez pas tourner à gauche.');
     }
 }
+
 
 ?> 
