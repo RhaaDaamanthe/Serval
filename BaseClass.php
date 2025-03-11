@@ -185,60 +185,69 @@ public function checkTurnLeft(){
     return $angleFutur; // Retourne l'angle après la rotation (RAJOUT le 10/03, 10:55)
 }
 
+// Déplacement vers l'avant en fonction de l'angle actuel
 public function goForward(){
-    $essai = $this->checkForward();
+    $essai = $this->checkForward(); // Appel de la méthode pour obtenir les nouvelles coordonnées possibles
 
+    // Déplacement en fonction de l'angle actuel
     if($this->_currentAngle == 0){
-        $this->setCurrentX($this->_currentX + 1);
+        $this->setCurrentX($this->_currentX + 1); // Déplacement vers la droite
     } else if($this->_currentAngle == 90){
-        $this->setCurrentY($this->_currentY + 1);
+        $this->setCurrentY($this->_currentY + 1); // Déplacement vers le haut
     } else if($this->_currentAngle == 180){
-        $this->setCurrentX($this->_currentX - 1);
+        $this->setCurrentX($this->_currentX - 1); // Déplacement vers la gauche
     } else if($this->_currentAngle == 270){
-        $this->setCurrentY($this->_currentY -1);
+        $this->setCurrentY($this->_currentY -1); // Déplacement vers le bas
     }
 }
 
+// Déplacement vers l'arrière en fonction de l'angle actuel
 public function goBack(){
-    $essai = $this->checkBack;
+    $essai = $this->checkBack(); // Appel de la méthode pour obtenir les nouvelles coordonnées possibles
 
+    // Déplacement en fonction de l'angle actuel
     if($this->_currentAngle == 0){
-        $this->setCurrentX($this->_current - 1);
+        $this->setCurrentX($this->_currentX - 1); // Déplacement vers la gauche
     } else if($this->_currentAngle == 90){
-        $this->setCurrentY($this->_currentY -1);
+        $this->setCurrentY($this->_currentY - 1); // Déplacement vers le bas
     } else if($this->_currentAngle == 180){
-        $this->setCurrentX($this->_currentX + 1);
+        $this->setCurrentX($this->_currentX + 1); // Déplacement vers la droite
     } else if($this->_currentAngle == 270){
-        $this->setCurrentY($this->_currentY + 1);
+        $this->setCurrentY($this->_currentY + 1); // Déplacement vers le haut
     }
 }
 
+// Déplacement vers la droite en fonction de l'angle actuel
 public function goRight(){
-    $essai = $this->checkForward();
+    $essai = $this->checkRight(); // Appel de la méthode pour obtenir les nouvelles coordonnées possibles
 
+    // Déplacement en fonction de l'angle actuel
     if($this->_currentAngle == 0){
-        $this->setCurrentX($this->_currentY - 1);
+        $this->setCurrentX($this->_currentX + 1); // Déplacement vers la droite
     } else if($this->_currentAngle == 90){
-        $this->setCurrentY($this->_currentX + 1);
+        $this->setCurrentY($this->_currentY - 1); // Déplacement vers le bas
     } else if($this->_currentAngle == 180){
-        $this->setCurrentX($this->_currentY + 1);
+        $this->setCurrentX($this->_currentX - 1); // Déplacement vers la gauche
     } else if($this->_currentAngle == 270){
-        $this->setCurrentY($this->_currentX -1);
+        $this->setCurrentY($this->_currentY + 1); // Déplacement vers le haut
     }
 }
 
+// Déplacement vers la gauche en fonction de l'angle actuel
 public function goLeft(){
-    $essai = $this->checkForward();
+    $essai = $this->checkLeft(); // Appel de la méthode pour obtenir les nouvelles coordonnées possibles
 
+    // Déplacement en fonction de l'angle actuel
     if($this->_currentAngle == 0){
-        $this->setCurrentX($this->_currentY + 1);
+        $this->setCurrentX($this->_currentX - 1); // Déplacement vers la gauche
     } else if($this->_currentAngle == 90){
-        $this->setCurrentY($this->_currentX - 1);
+        $this->setCurrentY($this->_currentY + 1); // Déplacement vers le haut
     } else if($this->_currentAngle == 180){
-        $this->setCurrentX($this->_currentY - 1);
+        $this->setCurrentX($this->_currentX + 1); // Déplacement vers la droite
     } else if($this->_currentAngle == 270){
-        $this->setCurrentY($this->_currentX +1);
+        $this->setCurrentY($this->_currentY - 1); // Déplacement vers le bas
     }
 }
+
 
 ?> 
