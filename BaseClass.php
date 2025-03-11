@@ -16,6 +16,19 @@ public function __construct($currentX, $currentY, $currentAngle,$dbh){
     $this->_dbh = $dbh; // Initialisation de la connexion à la base de données
 }
 
+// Méthode privée pour vérifier la possibilité de déplacement vers une position cible (à compléter)
+public function __checkMove($x, $y, $angle) {
+    // Requête SQL pour vérifier si une position (x, y) avec l'angle donné existe dans la base de données
+    $sql = "SELECT id FROM map WHERE coordx=:x AND coordy=:y AND direction=:angle";
+    $query = $this->_dbh->prepare($sql); // Prépare la requête SQL
+    $query->bindParam(':y', $y, PDO::PARAM_INT); // Lie la valeur de y au paramètre
+    $query->bindParam(':x', $x, PDO::PARAM_INT); // Lie la valeur de x au paramètre
+    $query->bindParam(':angle', $angle, PDO::PARAM_INT); // Lie l'angle au paramètre
+    $query->execute(); // Exécute la requête SQL
+    $newPos = $query->fetch(PDO::FETCH_OBJ); // Récupère le résultat sous forme d'objet
+    $result = isset($newPos->id) ? true : false; // Si une position est trouvée, on retourne vrai, sinon faux
+    return $result; // Retourne le résultat de la vérification
+}
 // Getter pour la coordonnée X actuelle
 public function getCurrentX(){
     return $this->_currentX; // Retourne la coordonnée X actuelle
@@ -59,16 +72,16 @@ public function checkForward(){
 
 
     // Selon l'angle, on détermine la nouvelle position
-    if($_currentAngle == 0){
+    if($this->_currentAngle == 0){
         $X = ($_currentX + 1); // Déplacement vers la droite
         $Y = $_currentY;
-    } else if($_currentAngle == 90){
+    } else if($this->_currentAngle == 90){
         $X = $_currentX;
         $Y = ($_currentY + 1); // Déplacement vers le haut
-    } else if($_currentAngle == 180){
+    } else if($this->_currentAngle == 180){
         $X = ($_currentX - 1); // Déplacement vers la gauche
         $Y = $_currentY;
-    } else if($_currentAngle == 270){
+    } else if($this->_currentAngle == 270){
         $X = $_currentX;
         $Y = ($_currentY - 1); // Déplacement vers le bas
     } 
@@ -83,16 +96,16 @@ public function checkBack(){
     $Y = $this->_currentY;
 
     // Selon l'angle, on détermine la nouvelle position
-    if($_currentAngle == 0){
+    if($this->_currentAngle == 0){
         $X = ($_currentX - 1); // Déplacement vers la gauche
         $Y = $_currentY;
-    } else if($_currentAngle == 90){
+    } else if($this->_currentAngle == 90){
         $X = $_currentX;
         $Y = ($_currentY - 1); // Déplacement vers le bas
-    } else if($_currentAngle == 180){
+    } else if($this->_currentAngle == 180){
         $X = ($_currentX + 1); // Déplacement vers la droite
         $Y = $_currentY;
-    } else if($_currentAngle == 270){
+    } else if($this->_currentAngle == 270){
         $X = $_currentX;
         $Y = ($_currentY + 1); // Déplacement vers le haut
     } 
@@ -107,16 +120,16 @@ public function checkRight(){
     $Y = $this->_currentY;
 
     // Selon l'angle, on détermine la nouvelle position
-    if($_currentAngle == 0){
+    if($this->_currentAngle == 0){
         $Y = ($_currentY - 1); // Déplacement vers la droite
         $X = $_currentX;
-    } else if($_currentAngle == 90){
+    } else if($this->_currentAngle == 90){
         $Y = $_currentY;
         $X = ($_currentX + 1); // Déplacement vers la droite
-    } else if($_currentAngle == 180){
+    } else if($this->_currentAngle == 180){
         $Y = ($_currentY + 1); // Déplacement vers la gauche
         $X = $_currentX;
-    } else if($_currentAngle == 270){
+    } else if($this->_currentAngle == 270){
         $Y = $_currentY;
         $X = ($_currentX - 1); // Déplacement vers la gauche
     }
@@ -131,16 +144,16 @@ public function checkLeft(){
     $Y = $this->_currentY;
     
     // Selon l'angle, on détermine la nouvelle position
-    if($_currentAngle == 0){
+    if($this->_currentAngle == 0){
         $Y = ($_currentY + 1); // Déplacement vers la gauche
         $X = $_currentX;
-    } else if($_currentAngle == 90){
+    } else if($this->_currentAngle == 90){
         $Y = $_currentY;
         $X = ($_currentX - 1); // Déplacement vers la gauche
-    } else if($_currentAngle == 180){
+    } else if($this->_currentAngle == 180){
         $Y = ($_currentY - 1); // Déplacement vers la droite
         $X = $_currentX;
-    } else if($_currentAngle == 270){
+    } else if($this->_currentAngle == 270){
         $Y = $_currentY;
         $X = ($_currentX + 1); // Déplacement vers la droite
     }
@@ -151,7 +164,7 @@ public function checkLeft(){
 // Vérifie la rotation vers la droite
 public function checkTurnRight(){
     // Selon l'angle actuel, on effectue la rotation à droite
-    if($_currentAngle == 0){
+    if($this->_currentAngle == 0){
         $angleFutur = 270 ; // Si on est face à 0°, on se tourne vers 270° (sud)
     } else {
         $angleFutur = ($_currentAngle - 90); // Sinon, on réduit l'angle de 90° (rotation droite)
@@ -163,7 +176,7 @@ public function checkTurnRight(){
 // Vérifie la rotation vers la gauche
 public function checkTurnLeft(){
     // Selon l'angle actuel, on effectue la rotation à gauche
-    if($_currentAngle == 270){
+    if($this->_currentAngle == 270){
         $angleFutur = 0 ; // Si on est face à 270°, on se tourne vers 0° (nord)
     } else {
         $angleFutur = ($_currentAngle + 90); // Sinon, on augmente l'angle de 90° (rotation gauche)
@@ -172,11 +185,4 @@ public function checkTurnLeft(){
     return $angleFutur; // Retourne l'angle après la rotation (RAJOUT le 10/03, 10:55)
 }
 
-// Méthode privée pour vérifier la possibilité de déplacement vers une position cible (à compléter)
-private function checkMove($X, $cY, $Angle){
-    // Cette méthode doit interroger la base de données et vérifier que le déplacement vers la position cible est valide.
-    // Elle pourrait renvoyer true si le mouvement est possible, false sinon.
-}
-
-// Modifier par Alex le 11/03/25 en direct live de la salle a manger avec les fous du bus
-//hello petit con?> 
+?> 
