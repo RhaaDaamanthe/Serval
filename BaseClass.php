@@ -199,6 +199,20 @@ public function goForward(){
     }
 }
 
+public function goBack(){
+    $essai = $this->checkBack;
+
+    if($this->_currentAngle == 0){
+        $this->setCurrentX($this->_current - 1);
+    } else if($this->_currentAngle == 90){
+        $this->setCurrentY($this->_currentY -1);
+    } else if($this->_currentAngle == 180){
+        $this->setCurrentX($this->_currentX + 1);
+    } else if($this->_currentAngle == 270){
+        $this->setCurrentY($this->_currentY + 1);
+    }
+}
+
 public function goRight(){
     $essai = $this->checkForward();
 
