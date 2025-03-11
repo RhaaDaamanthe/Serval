@@ -199,4 +199,32 @@ public function goForward(){
     }
 }
 
+public function goRight(){
+    $essai = $this->checkForward();
+
+    if($this->_currentAngle == 0){
+        $this->setCurrentX($this->_currentY - 1);
+    } else if($this->_currentAngle == 90){
+        $this->setCurrentY($this->_currentX + 1);
+    } else if($this->_currentAngle == 180){
+        $this->setCurrentX($this->_currentY + 1);
+    } else if($this->_currentAngle == 270){
+        $this->setCurrentY($this->_currentX -1);
+    }
+}
+
+public function goLeft(){
+    $essai = $this->checkForward();
+
+    if($this->_currentAngle == 0){
+        $this->setCurrentX($this->_currentY + 1);
+    } else if($this->_currentAngle == 90){
+        $this->setCurrentY($this->_currentX - 1);
+    } else if($this->_currentAngle == 180){
+        $this->setCurrentX($this->_currentY - 1);
+    } else if($this->_currentAngle == 270){
+        $this->setCurrentY($this->_currentX +1);
+    }
+}
+
 ?> 
