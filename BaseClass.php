@@ -248,4 +248,31 @@ public function goLeft(){
         $this->setCurrentY($this->_currentY - 1); // Déplacement vers le bas
     }
 }
+
+public function turnRight() {
+    $test = $this->checkTurnRight();
+    if($test == 1) {
+        if($this->_currentAngle == 0) {
+            $this->setCurrentAngle(270);
+        } else {
+            $this->setCurrentAngle($this->_currentAngle - 90);
+        }
+    }   else {
+        error_log('Vous ne pouvez pas tourner à droite.');
+    }
+}
+
+public function turnLeft() {
+    $test = $this->checkTurnLeft();
+    if($test == 1) {
+        if($this->_currentAngle == 270) {
+            $this->setCurrentAngle(0);
+        } else {
+            $this->setCurrentAngle($this->_currentAngle + 90);
+        }
+    }   else {
+        error_log('Vous ne pouvez pas tourner à gauche.');
+    }
+}
+
 ?> 
