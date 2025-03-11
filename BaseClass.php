@@ -177,4 +177,6 @@ private function checkMove($X, $cY, $Angle){
     // Cette méthode doit interroger la base de données et vérifier que le déplacement vers la position cible est valide.
     // Elle pourrait renvoyer true si le mouvement est possible, false sinon.
 }
+
+// Modifier par Alex le 11/03/25 en direct live de la salle a manger avec les fous du bus
 ?>  
