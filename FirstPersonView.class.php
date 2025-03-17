@@ -23,13 +23,36 @@ public function setMapId($mapId){
     $this->_mapId = $mapId;
 }
 
+private function __currentMapIs(){
+    $Y = $this->getcurrentY();
+    $X = $this->getCurrentX();
+    $Angle = $this->getCurrentAngle();
+
+    $sql = "SELECT id FROM map WHERE coordX=:x AND coordY=:y AND direction=:angle";
+    $query = $this->getDbh()->prepare($sql);
+    $query->bindParam(':y', $y, PDO::PARAM_INT);
+    $query->bindParam(':x', $x, PDO::PARAM_INT);
+    $query->bindParam(':angle', $Angle, PDO::PARAM_INT);
+    $query->execute();
+    $newPos = $query->fetch(PDO::FETCH_OBJ);
+    $this->setMapId($newPos->mapId);
+}
+
 
 
 
 // Méthode pour obtenir le chemin complet de l'image associée à la carte
 public function getView(){
-    // Utilisation de la constante IMAGE_DIRECTORY pour retourner le chemin de l'image
-return self::IMAGE_DIRECTORY . $this->_mapId . '.jpg';
-}}
+    $this->__currentMapId();
+    $dbh = $this->getDbh();
+    $sql = "SELECT images.path FROM images JOIN map ON map.id=images.`map id` WHERE images.`map id`=:map";
+    $query = $this->getDbh()->prepare($sql);
+    $query->bindParam(':map', $this->_mapId, PDO::PARAM_INT);
+    $query->execute();
+    $view = $query->fetch(PDO::FETCH_OBJ);
+    $path = $view->path;
+    return self:: IMAGE_DIRECTORY . $path;
+}
+}
 
 ?>
