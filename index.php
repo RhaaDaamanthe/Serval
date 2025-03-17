@@ -34,7 +34,7 @@ try {
         </div>
         <div class="autre">
 
-        <img src="assets/compass.png" alt="">
+        <img src="assets/comp-est.png" alt="">
             <form class="controls">
         <div class="row">
             <button type="button" name=""><i class="fa-solid fa-rotate-left"></i></button>
