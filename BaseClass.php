@@ -201,6 +201,7 @@ public function goForward(){
     }
 }
 
+<<<<<<< Updated upstream
 // Déplacement vers l'arrière en fonction de l'angle actuel
 public function goBack(){
     $essai = $this->checkBack(); // Appel de la méthode pour obtenir les nouvelles coordonnées possibles
@@ -289,5 +290,7 @@ public function turnLeft() {
     }
 }
 
+=======
+>>>>>>> Stashed changes
 
 ?> 
