@@ -2,9 +2,9 @@
 
 // Classe de base contenant les coordonnées, l'angle et la connexion à la base de données
 class BaseClass {
-    private $_currentX; // Coordonnée X actuelle
-    private $_currentY; // Coordonnée Y actuelle
-    private $_currentAngle; // Angle de vue actuel (0, 90, 180, 270)
+    private $_currentX = 0; // Coordonnée X actuelle
+    private $_currentY = 1; // Coordonnée Y actuelle
+    private $_currentAngle = 0; // Angle de vue actuel (0, 90, 180, 270)
     private $_dbh; // Connexion à la base de données
 }
 
@@ -19,7 +19,7 @@ public function __construct($currentX, $currentY, $currentAngle,$dbh){
 // Méthode privée pour vérifier la possibilité de déplacement vers une position cible (à compléter)
 public function __checkMove($x, $y, $angle) {
     // Requête SQL pour vérifier si une position (x, y) avec l'angle donné existe dans la base de données
-    $sql = "SELECT id FROM map WHERE coordx=:x AND coordy=:y AND direction=:angle";
+    $sql = "SELECT id FROM map WHERE coordX=:x AND coordY=:y AND direction=:angle";
     $query = $this->_dbh->prepare($sql); // Prépare la requête SQL
     $query->bindParam(':y', $y, PDO::PARAM_INT); // Lie la valeur de y au paramètre
     $query->bindParam(':x', $x, PDO::PARAM_INT); // Lie la valeur de x au paramètre
@@ -28,6 +28,39 @@ public function __checkMove($x, $y, $angle) {
     $newPos = $query->fetch(PDO::FETCH_OBJ); // Récupère le résultat sous forme d'objet
     $result = isset($newPos->id) ? true : false; // Si une position est trouvée, on retourne vrai, sinon faux
     return $result; // Retourne le résultat de la vérification
+}
+
+public function init() {
+    $y = 1;
+    $x = 0;
+    $angle = 180;
+
+    $sql = "SELECT id FROM map WHERE coordX=:x AND coordY=:y AND direction=:angle AND status_action=1";
+    $query = $this->_dbh->prepare($sql);
+    $query->bindParam(':y', $y, PDO::PARAM_INT);
+    $query->bindParam(':x', $x, PDO::PARAM_INT);
+    $query->bindParam(':angle', $angle, PDO::PARAM_INT);
+    $query->execute();
+    $reset = $query->fetch(PDO::FETCH_OBJ);
+    if(isset($reset->id) && ($reset->id == 3)) {
+        $_SESSION['items'] = 0;
+
+        $sql = "UPDATE actions SET status=0";
+        $query = $this->_dbh->prepare($sql);
+        $query->execute();
+
+        $sql = "UPDATE map SET status_action=0";
+        $query = $this->_dbh->prepare($sql);
+        $query->execute();
+
+        $sql = "UPDATE text SET status_action=0";
+        $query = $this->_dbh->prepare($sql);
+        $query->execute();
+
+        $sql = "UPDATE images SET status_action=0";
+        $query = $this->_dbh->prepare($sql);
+        $query->execute();
+    }
 }
 // Getter pour la coordonnée X actuelle
 public function getCurrentX(){
