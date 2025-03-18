@@ -1,7 +1,7 @@
 <?php
 // Fonction d'autoload
 function my_autoload($class) {
-    include $class . '.php';
+    require_once $class . '.php';
 }
 
 // Enregistre la fonction d'autoload
