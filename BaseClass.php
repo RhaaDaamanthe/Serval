@@ -31,15 +31,15 @@ public function __checkMove($x, $y, $angle) {
 }
 
 public function init() {
-    $y = 1;
-    $x = 0;
-    $angle = 180;
+    $Y = 1;
+    $X = 0;
+    $Angle = 180;
 
     $sql = "SELECT id FROM map WHERE coordX=:x AND coordY=:y AND direction=:angle AND status_action=1";
     $query = $this->_dbh->prepare($sql);
-    $query->bindParam(':y', $y, PDO::PARAM_INT);
-    $query->bindParam(':x', $x, PDO::PARAM_INT);
-    $query->bindParam(':angle', $angle, PDO::PARAM_INT);
+    $query->bindParam(':y', $Y, PDO::PARAM_INT);
+    $query->bindParam(':x', $X, PDO::PARAM_INT);
+    $query->bindParam(':angle', $Angle, PDO::PARAM_INT);
     $query->execute();
     $reset = $query->fetch(PDO::FETCH_OBJ);
     if(isset($reset->id) && ($reset->id == 3)) {
@@ -234,7 +234,6 @@ public function goForward(){
     }
 }
 
-<<<<<<< Updated upstream
 // Déplacement vers l'arrière en fonction de l'angle actuel
 public function goBack(){
     $essai = $this->checkBack(); // Appel de la méthode pour obtenir les nouvelles coordonnées possibles
@@ -323,7 +322,5 @@ public function turnLeft() {
     }
 }
 
-=======
->>>>>>> Stashed changes
 
 ?> 

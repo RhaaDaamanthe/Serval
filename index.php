@@ -14,6 +14,59 @@ try {
 } catch (Exception $e) {
     echo "Erreur : " . $e->getMessage();
 }
+
+// $player = new FirstPersonView();
+// $text = new FirstPersonText();
+// $player->init();
+
+if(isset($_GET['action'])) {
+    $actions = $_GET['action'];
+    $x = $_GET['x'];
+    $y = $_GET['y'];
+    $angle = $_GET['angle'];
+
+    $player->setCurrentX($x);
+    $player->setCurrentY($y);
+    $player->setCurrentAngle($angle);
+    $text->setCurrentX($x);
+    $text->setCurrentY($y);
+    $text->setCurrentAngle($angle);
+    $actions->setCurrentX($x);
+    $actions->setCurrentY($y);
+    $actions->setCurrentAngle($angle);
+
+    if($action == 'forward') {
+        $player->goForward();
+        $text->goForward();
+        $actions->goForward();
+    } else if ($action == 'back'){
+        $player->goBack();
+        $text->goBack();
+        $actions->goBack();
+    } else if ($action == 'right'){
+        $player->goRight();
+        $text->goRight();
+        $actions->goRight();
+    } else if ($action == 'left'){
+        $player->goLeft();
+        $text->goLeft();
+        $actions->goLeft();
+    } else if ($action == 'turnRight'){
+        $player->turnRight();
+        $text->turnRight();
+        $actions->turnRight();
+    } else if ($action == 'turnLeft'){
+        $player->turnLeft();
+        $text->turnLeft();
+        $actions->turnLeft();
+    } else if ($action == 'action') {
+        $actions->doAction();
+    } else {
+        error_log('Erreur!', 0);
+    }
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +83,7 @@ try {
             <img src="images/01-0.jpg" alt="ecran_jeu">
         </div>
         <div class="text">
-            <p>Trouvez le Saint Poulet.</p>
+            <?php echo $text->getText(); ?>
         </div>
         <div class="autre">
 

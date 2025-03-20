@@ -4,10 +4,10 @@ class firstPersonView extends BaseClass{
     const IMAGE_DIRECTORY = "./images/";
 
     // Propriété privée pour l'identifiant de la carte
-    private $_mapId;
+    private $_mapId = 1;
 
     // Constructeur de la classe
-    public function __contruct($currentX, $currentY, $currentAngle, $dbh, $mapId){
+    public function __construct($currentX, $currentY, $currentAngle, $dbh, $mapId){
         // Appel au constructeur de la classe parente
         parent::__construct($currentX, $currentY, $currentAngle, $dbh);
 

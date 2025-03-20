@@ -1,7 +1,7 @@
 <?php
 class FirstPersonText extends BaseClass{
         // Propriété privée pour l'identifiant de la carte
-        private $_mapId;
+        private $_mapId = 1;
 
         // Constructeur de la classe
         public function __contruct($currentX, $currentY, $currentAngle, $dbh, $mapId){
