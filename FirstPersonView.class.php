@@ -16,7 +16,7 @@ class firstPersonView extends BaseClass{
 }
 // Getter pour récupérer l'identifint de la carte
 public function getMapId(){
-    return $this->_mapid;
+    return $this->_mapId;
 }
 // Setter pour définir l'identifiant de la carte
 public function setMapId($mapId){
