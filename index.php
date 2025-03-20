@@ -83,7 +83,7 @@ if(isset($_GET['action'])) {
             <img src="images/01-0.jpg" alt="ecran_jeu">
         </div>
         <div class="text">
-            <?php echo $text->getText(); ?>
+            <p>Tié ou poulet de con</p>
         </div>
         <div class="autre">
 
