@@ -221,64 +221,75 @@ public function checkTurnLeft(){
 // Déplacement vers l'avant en fonction de l'angle actuel
 public function goForward(){
     $essai = $this->checkForward(); // Appel de la méthode pour obtenir les nouvelles coordonnées possibles
-
-    // Déplacement en fonction de l'angle actuel
-    if($this->_currentAngle == 0){
-        $this->setCurrentX($this->_currentX + 1); // Déplacement vers la droite
-    } else if($this->_currentAngle == 90){
-        $this->setCurrentY($this->_currentY + 1); // Déplacement vers le haut
-    } else if($this->_currentAngle == 180){
-        $this->setCurrentX($this->_currentX - 1); // Déplacement vers la gauche
-    } else if($this->_currentAngle == 270){
-        $this->setCurrentY($this->_currentY -1); // Déplacement vers le bas
-    }
+    if($essai == 1){
+        // Déplacement en fonction de l'angle actuel
+        if($this->_currentAngle == 0){
+            $this->setCurrentX($this->_currentX + 1); // Déplacement vers la droite
+        } else if($this->_currentAngle == 90){
+            $this->setCurrentY($this->_currentY + 1); // Déplacement vers le haut
+        } else if($this->_currentAngle == 180){
+            $this->setCurrentX($this->_currentX - 1); // Déplacement vers la gauche
+        } else if($this->_currentAngle == 270){
+            $this->setCurrentY($this->_currentY -1); // Déplacement vers le bas
+        }
+    } else {
+            error_log("Vous ne pouvez pas avancer!!!");
+        }
 }
 
 // Déplacement vers l'arrière en fonction de l'angle actuel
 public function goBack(){
     $essai = $this->checkBack(); // Appel de la méthode pour obtenir les nouvelles coordonnées possibles
-
+    if($essai == 1){
     // Déplacement en fonction de l'angle actuel
-    if($this->_currentAngle == 0){
-        $this->setCurrentX($this->_currentX - 1); // Déplacement vers la gauche
-    } else if($this->_currentAngle == 90){
-        $this->setCurrentY($this->_currentY - 1); // Déplacement vers le bas
-    } else if($this->_currentAngle == 180){
-        $this->setCurrentX($this->_currentX + 1); // Déplacement vers la droite
-    } else if($this->_currentAngle == 270){
-        $this->setCurrentY($this->_currentY + 1); // Déplacement vers le haut
+        if($this->_currentAngle == 0){
+            $this->setCurrentX($this->_currentX - 1); // Déplacement vers la gauche
+        } else if($this->_currentAngle == 90){
+            $this->setCurrentY($this->_currentY - 1); // Déplacement vers le bas
+        } else if($this->_currentAngle == 180){
+            $this->setCurrentX($this->_currentX + 1); // Déplacement vers la droite
+        } else if($this->_currentAngle == 270){
+            $this->setCurrentY($this->_currentY + 1); // Déplacement vers le haut
+        }
+    } else {
+        error_log("Vous ne pouvez pas reculez!!!!");
     }
 }
 
 // Déplacement vers la droite en fonction de l'angle actuel
 public function goRight(){
     $essai = $this->checkRight(); // Appel de la méthode pour obtenir les nouvelles coordonnées possibles
-
+    if($essai == 1){
     // Déplacement en fonction de l'angle actuel
-    if($this->_currentAngle == 0){
-        $this->setCurrentX($this->_currentX + 1); // Déplacement vers la droite
-    } else if($this->_currentAngle == 90){
-        $this->setCurrentY($this->_currentY - 1); // Déplacement vers le bas
-    } else if($this->_currentAngle == 180){
-        $this->setCurrentX($this->_currentX - 1); // Déplacement vers la gauche
-    } else if($this->_currentAngle == 270){
-        $this->setCurrentY($this->_currentY + 1); // Déplacement vers le haut
-    }
-}
+        if($this->_currentAngle == 0){
+            $this->setCurrentX($this->_currentX + 1); // Déplacement vers la droite
+        } else if($this->_currentAngle == 90){
+            $this->setCurrentY($this->_currentY - 1); // Déplacement vers le bas
+        } else if($this->_currentAngle == 180){
+            $this->setCurrentX($this->_currentX - 1); // Déplacement vers la gauche
+        } else if($this->_currentAngle == 270){
+            $this->setCurrentY($this->_currentY + 1); // Déplacement vers le haut
+        }
+     } else {
+        error_log("vous ne pouvez pas aller à droite!!!";)
+     }
 
 // Déplacement vers la gauche en fonction de l'angle actuel
 public function goLeft(){
     $essai = $this->checkLeft(); // Appel de la méthode pour obtenir les nouvelles coordonnées possibles
-
-    // Déplacement en fonction de l'angle actuel
-    if($this->_currentAngle == 0){
-        $this->setCurrentX($this->_currentX - 1); // Déplacement vers la gauche
-    } else if($this->_currentAngle == 90){
-        $this->setCurrentY($this->_currentY + 1); // Déplacement vers le haut
-    } else if($this->_currentAngle == 180){
-        $this->setCurrentX($this->_currentX + 1); // Déplacement vers la droite
-    } else if($this->_currentAngle == 270){
-        $this->setCurrentY($this->_currentY - 1); // Déplacement vers le bas
+    if($essai == 1){
+        // Déplacement en fonction de l'angle actuel
+        if($this->_currentAngle == 0){
+            $this->setCurrentX($this->_currentX - 1); // Déplacement vers la gauche
+        } else if($this->_currentAngle == 90){
+            $this->setCurrentY($this->_currentY + 1); // Déplacement vers le haut
+        } else if($this->_currentAngle == 180){
+            $this->setCurrentX($this->_currentX + 1); // Déplacement vers la droite
+        } else if($this->_currentAngle == 270){
+            $this->setCurrentY($this->_currentY - 1); // Déplacement vers le bas
+        }
+    } else {
+        error_log("Vous ne pouvez pas aller à gauche");
     }
 }
 
@@ -286,7 +297,6 @@ public function goLeft(){
 public function turnRight() {
     // Vérifie si la rotation vers la droite est possible
     $essai = $this->checkTurnRight();
-
     // Erreur ici : la variable utilisée dans la condition est "$test" au lieu de "$essai"
     if($essai == 1) {  
         // Si l'angle actuel est à 0° (nord), tourner à 270° (ouest)
