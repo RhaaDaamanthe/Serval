@@ -85,6 +85,9 @@ if(isset($_GET['action'])) {
         <div class="text">
 <<<<<<< Updated upstream
             <p>Tié ou poulet de con</p>
+=======
+            <p>je cherche le poulet.</p>
+>>>>>>> Stashed changes
         </div>
         <div class="autre">
 
