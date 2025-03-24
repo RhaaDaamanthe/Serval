@@ -106,17 +106,17 @@ public function checkForward(){
 
     // Selon l'angle, on détermine la nouvelle position
     if($this->_currentAngle == 0){
-        $X = ($_currentX + 1); // Déplacement vers la droite
-        $Y = $_currentY;
+        $X = ($this->_currentX + 1); // Déplacement vers la droite
+        $Y = $this->_currentY;
     } else if($this->_currentAngle == 90){
-        $X = $_currentX;
-        $Y = ($_currentY + 1); // Déplacement vers le haut
+        $X = $this->_currentX;
+        $Y = ($this->_currentY + 1); // Déplacement vers le haut
     } else if($this->_currentAngle == 180){
-        $X = ($_currentX - 1); // Déplacement vers la gauche
-        $Y = $_currentY;
+        $X = ($this->_currentX - 1); // Déplacement vers la gauche
+        $Y = $this->_currentY;
     } else if($this->_currentAngle == 270){
-        $X = $_currentX;
-        $Y = ($_currentY - 1); // Déplacement vers le bas
+        $X = $this->_currentX;
+        $Y = ($this->_currentY - 1); // Déplacement vers le bas
     } 
 
     return [$X, $Y]; // Retourne les nouvelles coordonnées , (RAJOUT 10/03 10:55)
@@ -130,17 +130,17 @@ public function checkBack(){
 
     // Selon l'angle, on détermine la nouvelle position
     if($this->_currentAngle == 0){
-        $X = ($_currentX - 1); // Déplacement vers la gauche
-        $Y = $_currentY;
+        $X = ($this->_currentX - 1); // Déplacement vers la gauche
+        $Y = $this->_currentY;
     } else if($this->_currentAngle == 90){
-        $X = $_currentX;
-        $Y = ($_currentY - 1); // Déplacement vers le bas
+        $X = $this->_currentX;
+        $Y = ($this->_currentY - 1); // Déplacement vers le bas
     } else if($this->_currentAngle == 180){
-        $X = ($_currentX + 1); // Déplacement vers la droite
-        $Y = $_currentY;
+        $X = ($this->_currentX + 1); // Déplacement vers la droite
+        $Y = $this->_currentY;
     } else if($this->_currentAngle == 270){
-        $X = $_currentX;
-        $Y = ($_currentY + 1); // Déplacement vers le haut
+        $X = $this->_currentX;
+        $Y = ($this->_currentY + 1); // Déplacement vers le haut
     } 
 
     return [$X, $Y]; // Retourne les nouvelles coordonnées , (RAJOUT 10/03 10:55)
@@ -154,17 +154,17 @@ public function checkRight(){
 
     // Selon l'angle, on détermine la nouvelle position
     if($this->_currentAngle == 0){
-        $Y = ($_currentY - 1); // Déplacement vers la droite
-        $X = $_currentX;
+        $Y = ($this->_currentY - 1); // Déplacement vers la droite
+        $X = $this->_currentX;
     } else if($this->_currentAngle == 90){
-        $Y = $_currentY;
-        $X = ($_currentX + 1); // Déplacement vers la droite
+        $Y = $this->_currentY;
+        $X = ($this->_currentX + 1); // Déplacement vers la droite
     } else if($this->_currentAngle == 180){
-        $Y = ($_currentY + 1); // Déplacement vers la gauche
-        $X = $_currentX;
+        $Y = ($this->_currentY + 1); // Déplacement vers la gauche
+        $X = $this->_currentX;
     } else if($this->_currentAngle == 270){
-        $Y = $_currentY;
-        $X = ($_currentX - 1); // Déplacement vers la gauche
+        $Y = $this->_currentY;
+        $X = ($this->_currentX - 1); // Déplacement vers la gauche
     }
 
     return [$X, $Y]; // Retourne les nouvelles coordonnées , (RAJOUT 10/03 10:55)
@@ -178,17 +178,17 @@ public function checkLeft(){
     
     // Selon l'angle, on détermine la nouvelle position
     if($this->_currentAngle == 0){
-        $Y = ($_currentY + 1); // Déplacement vers la gauche
-        $X = $_currentX;
+        $Y = ($this->_currentY + 1); // Déplacement vers la gauche
+        $X = $this->_currentX;
     } else if($this->_currentAngle == 90){
-        $Y = $_currentY;
-        $X = ($_currentX - 1); // Déplacement vers la gauche
+        $Y = $this->_currentY;
+        $X = ($this->_currentX - 1); // Déplacement vers la gauche
     } else if($this->_currentAngle == 180){
-        $Y = ($_currentY - 1); // Déplacement vers la droite
-        $X = $_currentX;
+        $Y = ($this->_currentY - 1); // Déplacement vers la droite
+        $X = $this->_currentX;
     } else if($this->_currentAngle == 270){
-        $Y = $_currentY;
-        $X = ($_currentX + 1); // Déplacement vers la droite
+        $Y = $this->_currentY;
+        $X = ($this->_currentX + 1); // Déplacement vers la droite
     }
 
     return [$X, $Y]; // Retourne les nouvelles coordonnées , (RAJOUT 10/03 10:55)
