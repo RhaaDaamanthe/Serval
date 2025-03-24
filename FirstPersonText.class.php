@@ -4,7 +4,7 @@ class FirstPersonText extends BaseClass{
         private $_mapId = 1;
 
         // Constructeur de la classe
-        public function __contruct($currentX, $currentY, $currentAngle, $dbh, $mapId){
+        public function __construct($currentX, $currentY, $currentAngle, $dbh, $mapId){
             // Appel au constructeur de la classe parente
             parent::__construct($currentX, $currentY, $currentAngle, $dbh);
     
@@ -52,7 +52,7 @@ class FirstPersonText extends BaseClass{
         $dbh = $this->getDbh();// Récupération de la connexion à la base de données
 
         // Requête SQL pour obtenir le texte associé à la carte
-        $sql = "SELECT text.text FROM text JOIN map ON map.id=text.`map id`=:map WHERE map.id";
+        $sql = "SELECT text.text FROM text JOIN map ON map.id=text.`map id`=:map WHERE map.id = :map";
         $query = $dbh->prepare($sql);
 
         $query->bindParam(':map', $this->_mapId, PDO::PARAM_INT);  // Lien du paramètre de la requête

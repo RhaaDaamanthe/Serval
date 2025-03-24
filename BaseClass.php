@@ -200,7 +200,7 @@ public function checkTurnRight(){
     if($this->_currentAngle == 0){
         $angleFutur = 270 ; // Si on est face à 0°, on se tourne vers 270° (sud)
     } else {
-        $angleFutur = ($_currentAngle - 90); // Sinon, on réduit l'angle de 90° (rotation droite)
+        $angleFutur = ($this->_currentAngle - 90); // Sinon, on réduit l'angle de 90° (rotation droite)
     }
 
     return $angleFutur; // Retourne l'angle après la rotation (RAJOUT le 10/03, 10:55)
@@ -212,7 +212,7 @@ public function checkTurnLeft(){
     if($this->_currentAngle == 270){
         $angleFutur = 0 ; // Si on est face à 270°, on se tourne vers 0° (nord)
     } else {
-        $angleFutur = ($_currentAngle + 90); // Sinon, on augmente l'angle de 90° (rotation gauche)
+        $angleFutur = ($this->_currentAngle + 90); // Sinon, on augmente l'angle de 90° (rotation gauche)
     }
 
     return $angleFutur; // Retourne l'angle après la rotation (RAJOUT le 10/03, 10:55)
@@ -233,7 +233,8 @@ public function goForward(){
             $this->setCurrentY($this->_currentY -1); // Déplacement vers le bas
         }
     } else {
-            error_log("Vous ne pouvez pas avancer!!!");
+            error_log("Déplacement impossible vers l'avant : position invalide.");
+
         }
 }
 
@@ -272,7 +273,7 @@ public function goRight(){
         }
      } else {
         error_log("vous ne pouvez pas aller à droite!!!";)
-     }
+     }}
 
 // Déplacement vers la gauche en fonction de l'angle actuel
 public function goLeft(){
@@ -289,7 +290,7 @@ public function goLeft(){
             $this->setCurrentY($this->_currentY - 1); // Déplacement vers le bas
         }
     } else {
-        error_log("Vous ne pouvez pas aller à gauche");
+        error_log("Vous ne pouvez pas aller à gauche!!!");
     }
 }
 

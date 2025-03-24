@@ -26,7 +26,7 @@ public function setMapId($mapId){
 // Méthode privée pour mettre à jour l'identifiant de la carte en fonction des coordonnées et de l'angle
 private function __currentMapId(){
     // Récupération des coordonnées Y, X, et de l'angle actuel de la position
-    $Y = $this->getcurrentY();   // Récupère la coordonnée Y
+    $Y = $this->getCurrentY();   // Récupère la coordonnée Y
     $X = $this->getCurrentX();   // Récupère la coordonnée X
     $Angle = $this->getCurrentAngle();   // Récupère l'angle actuel
 
