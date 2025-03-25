@@ -16,71 +16,71 @@ try {
 }
 
 
-// Initialisation des objets de jeu : ces objets gèrent l'état du jeu
-$player = new FirstPersonView();  // Représente la vue du joueur (position et orientation)
-$text = new FirstPersonText();    // Gère le texte affiché (description)
-// $actions = new FirstPersonAction();  // Gère les actions du joueur
-$player->init();  // Initialisation du joueur (par exemple, position initiale)
+// // Initialisation des objets de jeu : ces objets gèrent l'état du jeu
+// $player = new FirstPersonView();  // Représente la vue du joueur (position et orientation)
+// $text = new FirstPersonText();    // Gère le texte affiché (description)
+// // $actions = new FirstPersonAction();  // Gère les actions du joueur
+// $player->init();  // Initialisation du joueur (par exemple, position initiale)
 
-// Gestion des actions du joueur en fonction des paramètres dans l'URL
-if (isset($_GET['action'])) {
-    // Récupération des paramètres passés dans l'URL (action, coordonnées x et y, et angle)
-    $action = $_GET['action'];
-    $x = $_GET['x'];  // Position actuelle en X
-    $y = $_GET['y'];  // Position actuelle en Y
-    $angle = $_GET['angle'];  // Angle actuel de la vue du joueur
+// // Gestion des actions du joueur en fonction des paramètres dans l'URL
+// if (isset($_GET['action'])) {
+//     // Récupération des paramètres passés dans l'URL (action, coordonnées x et y, et angle)
+//     $action = $_GET['action'];
+//     $x = $_GET['x'];  // Position actuelle en X
+//     $y = $_GET['y'];  // Position actuelle en Y
+//     $angle = $_GET['angle'];  // Angle actuel de la vue du joueur
 
-    // Mise à jour des coordonnées et de l'angle dans les objets correspondants
-    $player->setCurrentX($X);
-    $player->setCurrentY($Y);
-    $player->setCurrentAngle($Angle);
+//     // Mise à jour des coordonnées et de l'angle dans les objets correspondants
+//     $player->setCurrentX($X);
+//     $player->setCurrentY($Y);
+//     $player->setCurrentAngle($Angle);
     
-    $text->setCurrentX($X);  // Mise à jour des coordonnées dans le texte
-    $text->setCurrentY($Y);
-    $text->setCurrentAngle($Angle);
+//     $text->setCurrentX($X);  // Mise à jour des coordonnées dans le texte
+//     $text->setCurrentY($Y);
+//     $text->setCurrentAngle($Angle);
     
-    $actions->setCurrentX($x);  // Mise à jour des coordonnées dans les actions
-    $actions->setCurrentY($y);
-    $actions->setCurrentAngle($Angle);
+//     $actions->setCurrentX($x);  // Mise à jour des coordonnées dans les actions
+//     $actions->setCurrentY($y);
+//     $actions->setCurrentAngle($Angle);
 
-    // Effectuer l'action appropriée en fonction de l'action choisie
-    switch ($action) {
-        case 'forward':
-            // Déplacement en avant
-            $player->goForward();
-            $text->goForward();
-            $actions->goForward();
-            break;
-        case 'back':
-            // Déplacement en arrière
-            $player->goBack();
-            $text->goBack();
-            $actions->goBack();
-            break;
-        case 'right':
-            // Rotation à droite
-            $player->goRight();
-            $text->goRight();
-            $actions->goRight();
-            break;
-        case 'left':
-            // Rotation à gauche
-            $player->goLeft();
-            $text->goLeft();
-            $actions->goLeft();
-            break;
-        case 'turnRight':
-            // Tourner à droite
-            $player->turnRight();
-            $text->turnRight();
-            $actions->turnRight();
-            break;
-        case 'turnLeft':
-            // Tourner à gauche
-            $player->turnLeft();
-            $text->turnLeft();
-            $actions->turnLeft();
-            break;
+//     // Effectuer l'action appropriée en fonction de l'action choisie
+//     switch ($action) {
+//         case 'forward':
+//             // Déplacement en avant
+//             $player->goForward();
+//             $text->goForward();
+//             $actions->goForward();
+//             break;
+//         case 'back':
+//             // Déplacement en arrière
+//             $player->goBack();
+//             $text->goBack();
+//             $actions->goBack();
+//             break;
+//         case 'right':
+//             // Rotation à droite
+//             $player->goRight();
+//             $text->goRight();
+//             $actions->goRight();
+//             break;
+//         case 'left':
+//             // Rotation à gauche
+//             $player->goLeft();
+//             $text->goLeft();
+//             $actions->goLeft();
+//             break;
+//         case 'turnRight':
+//             // Tourner à droite
+//             $player->turnRight();
+//             $text->turnRight();
+//             $actions->turnRight();
+//             break;
+//         case 'turnLeft':
+//             // Tourner à gauche
+//             $player->turnLeft();
+//             $text->turnLeft();
+//             $actions->turnLeft();
+//             break;
         // case 'action':
         //     // Effectuer une action (par exemple, ouvrir une porte)
         //     $actions->doAction();
@@ -89,8 +89,8 @@ if (isset($_GET['action'])) {
         //     // Si l'action est inconnue, on log l'erreur
         //     error_log('Erreur inconnue!', 0);
         //     break;
-    }
-}
+//     }
+// }
 
 ?>
 <!DOCTYPE html>
